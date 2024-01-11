@@ -8,10 +8,6 @@ public class Problem54 {
         int[][] a = {{2,3,4},{5,6,7},{8,9,10},{11,12,13}};
 //        int[][] a = {{3},{2}};
 
-        if(a[0].length == 0){
-
-            return new int[];
-        }
         List<Integer> lst = spiralOrder(a);
         int[] a1 = new int[lst.size()];
         for (int i = 0; i < lst.size(); i++) {
