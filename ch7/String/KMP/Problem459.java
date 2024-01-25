@@ -2,7 +2,7 @@ package ch7.String.KMP;
 
 public class Problem459 {
     public static void main(String[] args) {
-        System.out.println(repeatedSubstringPattern("abab"));
+        System.out.println(repeatedSubstringPattern3("abab"));
         //  a  bababa   b
     }
 
@@ -34,7 +34,39 @@ public class Problem459 {
         return false;
 
     }
+
+    public static boolean repeatedSubstringPattern3(String s){
+        if (s.isEmpty()) return false;
+
+        int[] next = getNext(s);
+        int len = next.length;
+        if (next[len - 1] != 0 && (len % (len - next[len - 1]) == 0)){
+            return true;
+        }
+        return false;
+    }
+
+    private static int[] getNext(String s) {
+        int[] next = new int[s.length()];
+        next[0] = 0;
+        int i = 1;
+        int k = 0;
+        int len = s.length();
+        while (i < len){
+            if (s.charAt(i) == s.charAt(k)){
+                k++;
+                next[i] = k;
+                i++;
+            }else {
+                if(k == 0){
+                    next[i] = 0;
+                    i++;
+                }else {
+                    k = next[k - 1];
+                }
+            }
+        }
+        return next;
+    }
 }
 
-//abcabcabc  bc abc abc abc abc ab
-//abcabcabe  bc abc abe abc abc ab

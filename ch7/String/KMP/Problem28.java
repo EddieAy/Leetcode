@@ -2,12 +2,12 @@ package ch7.String.KMP;
 
 public class Problem28 {
     public static void main(String[] args) {
-        System.out.println(strStr("leetcodecodco","codco"));
+        System.out.println(strStr("leetcodecodco","ABCDEFABCDEFQW"));
     }
 
     public static int strStr(String haystack, String needle) {
         int i = 0, j = 0;
-        int[] next = getNext(needle);
+        int[] next = getNext(needle);//[0, 0, 0, 1, 2,3,4,1,2]
         while (i < haystack.length()){
             if (haystack.charAt(i) == needle.charAt(j)){
                 i++;
