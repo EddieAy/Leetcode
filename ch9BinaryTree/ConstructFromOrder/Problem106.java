@@ -97,7 +97,16 @@ public class Problem106 {
     }
 
     private static TreeNode helper(int[] inorder, int instart, int inend, int[] postorder, int pstart, int pend) {
-        return null;
+        if(instart >= inend || pstart >= pend){
+            return null;
+        }
+        int rootIndex = map.get(postorder[pend - 1]);  //inside is value         map value --> index
+        TreeNode root = new TreeNode(inorder[rootIndex]);
+        int leftNum = rootIndex - instart;
+        root.left = helper(inorder,instart,rootIndex,postorder,pstart,pstart + leftNum);
+        root.right = helper(inorder,rootIndex + 1,inend,postorder,pstart + leftNum,pend - 1);
+
+        return root;
     }
 
 
