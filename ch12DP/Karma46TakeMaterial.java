@@ -83,7 +83,6 @@ public class Karma46TakeMaterial {
         //本来 应该每个值都赋一个 不影响后面比较max的最小值 敲定为0   但是这里不用赋值为0 默认都是0
         /*
          * dp[j] = max(dp[j],dp[j - weight[i]] + value[i])
-         *
          * */
         int len = weight.length;
         for (int i = 0; i < len; i++) {
