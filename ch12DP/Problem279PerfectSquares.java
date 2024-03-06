@@ -42,4 +42,21 @@ public class Problem279PerfectSquares {
         }
         return dp[len][n];
     }
+/*
+* 为什么j的循环从i*i开始而不是从0开始，有以下几个原因：
+
+初始条件: dp[0]已经被初始化为0，意味着0可以由0个完全平方数组成，这是一个基础情况。
+* 从i*i开始是因为任何小于i*i的数字都不能由当前考虑的完全平方数i*i构成。
+* 例如，如果i=2，那么i*i=4，任何小于4的数字都不可能由4作为一个组成部分（因为我们只能使用整数次的平方数，且必须是完全平方数）。*/
+    public int numSquares2(int n){
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp,Integer.MAX_VALUE);
+        dp[0] = 0;
+        for (int i = 1; i * i <= n  ; i++) {
+            for (int j = i * i; j <= n ; j++) {
+                dp[j] = Math.min(dp[j], dp[j - i * i] + 1);
+            }
+        }
+        return dp[n];
+    }
 }
