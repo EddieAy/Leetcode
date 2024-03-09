@@ -18,7 +18,6 @@ public class Problem1143LongestCommonSubsequence {
         int len1 = text1.length();
         int len2 = text2.length();
         int[][] dp = new int[len1 + 1][len2 + 1];
-        int res = 0;
         for (int i = 1; i <= len1 ; i++) {
             for (int j = 1; j <= len2 ; j++) {
                 if(text1.charAt(i - 1) == text2.charAt(j - 1)){
