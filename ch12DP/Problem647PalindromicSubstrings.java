@@ -3,7 +3,7 @@ package ch12DP;
 public class Problem647PalindromicSubstrings {
 
     public static void main(String[] args) {
-        String s = "aaa";
+        String s = "abc";
         System.out.println(new Problem647PalindromicSubstrings().countSubstrings(s));
     }
     public int countSubstrings(String s) {
